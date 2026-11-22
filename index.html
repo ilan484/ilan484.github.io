@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ilan Esquenazi, estudiante de Seguridad Informática en Córdoba, Argentina. Soporte técnico, redes, Linux y fundamentos de ciberseguridad.">
+<title>Ilan Esquenazi | Seguridad informática</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05060F; --panel:rgba(14,17,38,.62); --ink:#EAEDFB; --muted:#A3ABCB; --line:rgba(160,172,255,.22);
+  --accent:#AEBBFF; --gold:#FFD9A0;
+  color-scheme:dark; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "IBM Plex Sans",system-ui,sans-serif;}
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:-2;display:block;}
+.nebula{position:fixed;inset:-20%;z-index:-3;pointer-events:none;
+  background:
+    radial-gradient(40% 35% at 25% 30%,rgba(92,70,200,.38),transparent 70%),
+    radial-gradient(35% 30% at 75% 60%,rgba(30,110,190,.30),transparent 70%),
+    radial-gradient(30% 25% at 55% 85%,rgba(190,70,150,.20),transparent 70%);
+  animation:drift 90s ease-in-out infinite alternate;}
+@keyframes drift{from{transform:rotate(0) scale(1)}to{transform:rotate(8deg) scale(1.12)}}
+@media (prefers-reduced-motion:reduce){.nebula{animation:none}html{scroll-behavior:auto}}
+
+.wrap{max-width:46rem;margin:0 auto;padding:0 1.25rem;}
+h1,h2,h3{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;line-height:1.1;margin:0;}
+a{color:var(--accent);text-underline-offset:3px;}
+a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px;}
+
+.hero{min-height:88vh;display:flex;align-items:center;padding:4rem 0;}
+.hero h1{font-weight:800;font-size:clamp(3rem,12vw,6rem);letter-spacing:-.035em;}
+.role{font-family:"Bricolage Grotesque",sans-serif;font-weight:500;font-size:clamp(1.15rem,3.4vw,1.55rem);color:var(--gold);margin:1rem 0 1.5rem;}
+.lead{max-width:36rem;color:var(--muted);margin:0 0 2rem;}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem;}
+.btn{display:inline-block;padding:.7rem 1.3rem;border-radius:6px;font-weight:500;text-decoration:none;border:1.5px solid var(--accent);}
+.btn.primary{background:var(--accent);color:#0A0D24;}
+
+section{padding:3rem 0;}
+h2{font-size:1.85rem;font-weight:700;margin-bottom:1.5rem;}
+.panel{background:var(--panel);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:10px;padding:1.5rem;}
+.panel p{margin:0;}
+
+.job{padding:0 0 1.75rem 1.25rem;border-left:2px solid var(--line);margin-left:.25rem;position:relative;}
+.job:last-child{padding-bottom:0;}
+.job::before{content:"";position:absolute;left:-6px;top:.5rem;width:10px;height:10px;border-radius:50%;background:var(--gold);}
+.job h3{font-size:1.2rem;font-weight:700;}
+.meta{color:var(--muted);font-size:.95rem;margin:.2rem 0 .6rem;}
+.job ul{margin:0;padding-left:1.1rem;color:var(--muted);}
+.job li{margin-bottom:.35rem;}
+
+.project{display:grid;grid-template-columns:1fr auto;gap:.2rem 1.5rem;padding:1.1rem 0;border-top:1px solid var(--line);}
+.project:last-child{border-bottom:1px solid var(--line);}
+.project h3{font-size:1.2rem;font-weight:700;}
+.project p{grid-column:1;margin:.3rem 0;color:var(--muted);}
+.tech{grid-column:1;font-size:.9rem;color:var(--accent);}
+.status{grid-column:2;grid-row:1;align-self:start;font-size:.85rem;font-weight:500;padding:.15rem .65rem;border:1.5px solid var(--gold);color:var(--gold);border-radius:99px;white-space:nowrap;}
+@media (max-width:30rem){.project{grid-template-columns:1fr}.status{grid-column:1;grid-row:auto;justify-self:start;margin-bottom:.3rem}}
+
+dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:.9rem 2rem;}
+dt{font-weight:500;}
+dd{margin:0;color:var(--muted);}
+@media (max-width:34rem){dl{grid-template-columns:1fr;gap:.1rem}dd{margin-bottom:.8rem}}
+.edu{margin:0;padding:0;list-style:none;}
+.edu li{padding:.7rem 0;border-top:1px solid var(--line);}
+.edu li:last-child{border-bottom:1px solid var(--line);}
+.edu span{display:block;color:var(--muted);font-size:.95rem;}
+footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.95rem;}
+</style>
+</head>
+<body>
+<div class="nebula" aria-hidden="true"></div>
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Ilan Esquenazi</h1>
+    <p class="role">Estudiante de Seguridad Informática y soporte técnico</p>
+    <p class="lead">Busco un rol inicial en ciberseguridad, gestión de identidades y accesos (IAM) o infraestructura IT. Me interesa entender cómo se rompen los sistemas para poder protegerlos.</p>
+    <div class="actions">
+      <a class="btn primary" href="#experiencia">Ver experiencia</a>
+      <a class="btn" href="#contacto">Contacto</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="perfil"><div class="wrap">
+  <h2>Perfil</h2>
+  <div class="panel"><p>Tengo experiencia práctica en diagnóstico de redes, control de accesos, administración de Linux y fundamentos de ciberseguridad. Trabajo con evaluación de vulnerabilidades, redes TCP/IP y scripting. Mi nivel de inglés es B2 (Cambridge FCE). Quiero aplicar la resolución analítica de problemas para contribuir a la seguridad de sistemas empresariales.</p></div>
+</div></section>
+
+<section id="habilidades"><div class="wrap">
+  <h2>Habilidades</h2>
+  <div class="panel"><dl>
+    <dt>Ciberseguridad</dt><dd>Evaluación de vulnerabilidades, OSINT, enumeración de subdominios, identificación de tecnologías web, gestión de privilegios y accesos, Nmap, Burp Suite</dd>
+    <dt>Redes</dt><dd>TCP/IP, UDP, modelo OSI, subnetting, direccionamiento MAC/IP, puertos comunes, diagnóstico de conectividad</dd>
+    <dt>Sistemas</dt><dd>Administración de Linux, Windows, máquinas virtuales (VMware, VirtualBox), scripting en Bash</dd>
+    <dt>Programación</dt><dd>C, Python, Haskell, Assembler básico</dd>
+    <dt>Habilidades blandas</dt><dd>Colaboración interdisciplinaria, resolución de incidentes bajo presión, documentación técnica, pensamiento analítico</dd>
+  </dl></div>
+</div></section>
+
+<section id="experiencia"><div class="wrap">
+  <h2>Experiencia</h2>
+  <div class="job">
+    <h3>Especialista en Soporte Técnico</h3>
+    <p class="meta">Geex, diciembre 2025 a abril 2026</p>
+    <ul>
+      <li>Diagnostiqué y resolví incidentes de hardware, software y conectividad de red, con altos índices de resolución en el primer contacto.</li>
+      <li>Gestioné permisos de cuentas, configuraciones de sistemas y soporte técnico remoto.</li>
+      <li>Documenté incidencias recurrentes y procedimientos de escalamiento.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <h3>Pasante de Ciberseguridad</h3>
+    <p class="meta">Ingeniar S.A., septiembre a noviembre 2022</p>
+    <ul>
+      <li>Asistí al equipo de seguridad en evaluaciones básicas de vulnerabilidades, monitoreo de sistemas y controles de seguridad de red.</li>
+      <li>Aprendí sobre políticas de seguridad corporativa, controles de acceso y mitigación de amenazas.</li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="proyectos"><div class="wrap">
+  <h2>Proyectos</h2>
+  <article class="project">
+    <h3>Sitios web seguros para negocios chicos</h3><span class="status">En progreso</span>
+    <p>Páginas y menús QR para cafeterías y almacenes, con HTTPS, backups y revisión de seguridad básica.</p>
+    <span class="tech">HTML, CSS, JavaScript</span>
+  </article>
+  <article class="project">
+    <h3>Laboratorio de práctica</h3><span class="status">En progreso</span>
+    <p>Entorno propio para practicar reconocimiento y análisis de vulnerabilidades, y documentar lo aprendido.</p>
+    <span class="tech">Linux, VirtualBox, Nmap, Burp Suite</span>
+  </article>
+</div></section>
+
+<section id="educacion"><div class="wrap">
+  <h2>Educación</h2>
+  <ul class="edu">
+    <li>Licenciatura en Seguridad Informática<span>Universidad Siglo 21, 2025 a la actualidad</span></li>
+    <li>Ciencias de la Computación<span>Universidad Nacional de Córdoba (UNC), 2023 a 2024</span></li>
+    <li>Cambridge English: First Certificate (FCE), nivel B2<span>Inglés intermedio alto</span></li>
+  </ul>
+</div></section>
+
+<section id="contacto"><div class="wrap">
+  <h2>Contacto</h2>
+  <div class="panel"><p>Córdoba, Argentina<br>
+    <a href="mailto:idesquenazi@gmail.com">idesquenazi@gmail.com</a><br>
+    <a href="https://www.linkedin.com/">LinkedIn</a><br>
+    <a href="https://github.com/">GitHub</a></p></div>
+</div></section>
+</main>
+<footer><div class="wrap">© 2026 Ilan Esquenazi</div></footer>
+
+<script>
+(function(){
+  var c=document.getElementById("sky"),x=c.getContext("2d"),W,H,D,stars=[],shoot=null;
+  var still=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function init(){
+    D=Math.min(window.devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
+    c.width=W*D;c.height=H*D;x.setTransform(D,0,0,D,0,0);
+    var n=Math.round(W*H/5500);stars=[];
+    for(var i=0;i<n;i++){var l=Math.random();
+      stars.push({x:Math.random()*W,y:Math.random()*H,r:.3+l*1.3,v:.01+l*.05,p:Math.random()*6.28,s:.4+Math.random()*1.6,
+        h:Math.random()<.18?"255,217,160":"200,210,255"});}
+  }
+  function draw(t){
+    x.clearRect(0,0,W,H);
+    for(var i=0;i<stars.length;i++){var s=stars[i];
+      var a=.35+.65*(.5+.5*Math.sin(s.p+t*.001*s.s));
+      x.fillStyle="rgba("+s.h+","+a+")";x.beginPath();x.arc(s.x,s.y,s.r,0,6.283);x.fill();
+      if(!still){s.x-=s.v;if(s.x<-2){s.x=W+2;s.y=Math.random()*H;}}
+    }
+    if(!still){
+      if(!shoot&&Math.random()<.002){shoot={x:Math.random()*W,y:Math.random()*H*.5,l:0};}
+      if(shoot){shoot.x+=9;shoot.y+=4;shoot.l+=1;
+        var g=x.createLinearGradient(shoot.x,shoot.y,shoot.x-90,shoot.y-40);
+        g.addColorStop(0,"rgba(255,255,255,.9)");g.addColorStop(1,"rgba(255,255,255,0)");
+        x.strokeStyle=g;x.lineWidth=1.5;x.beginPath();x.moveTo(shoot.x,shoot.y);x.lineTo(shoot.x-90,shoot.y-40);x.stroke();
+        if(shoot.l>60)shoot=null;}
+      requestAnimationFrame(draw);
+    }
+  }
+  init();requestAnimationFrame(draw);
+  addEventListener("resize",function(){init();if(still)draw(0);});
+})();
+</script>
+</body>
+</html>
