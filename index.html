@@ -11,8 +11,8 @@
 <style>
 :root {
   --bg: #04070D;
-  --bg-elevated: rgba(10, 16, 28, 0.74);
-  --bg-card-hover: rgba(16, 26, 44, 0.88);
+  --bg-elevated: rgba(10, 16, 28, 0.76);
+  --bg-card-hover: rgba(16, 26, 44, 0.9);
   --ink: #F1F5F9;
   --muted: #94A3B8;
   --dim: #64748B;
@@ -107,7 +107,7 @@ a:focus-visible, button:focus-visible {
   right: 0;
   height: var(--nav-h);
   z-index: 100;
-  background: rgba(4, 7, 13, 0.78);
+  background: rgba(4, 7, 13, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--line);
@@ -115,32 +115,33 @@ a:focus-visible, button:focus-visible {
 }
 
 .topbar.scrolled {
-  background: rgba(4, 7, 13, 0.92);
+  background: rgba(4, 7, 13, 0.94);
   border-bottom-color: rgba(0, 240, 255, 0.28);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
 }
 
 .topbar-inner {
-  max-width: 68rem;
+  max-width: 74rem;
   height: 100%;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.55rem;
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--ink);
   letter-spacing: -0.02em;
   white-space: nowrap;
+  user-select: none;
 }
 
 .brand-mark {
@@ -168,7 +169,7 @@ a:focus-visible, button:focus-visible {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.15rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -177,12 +178,13 @@ a:focus-visible, button:focus-visible {
 .nav-links a {
   position: relative;
   display: inline-block;
-  padding: 0.42rem 0.72rem;
-  font-size: 0.88rem;
+  padding: 0.4rem 0.62rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--muted);
   border-radius: 6px;
   transition: color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -198,8 +200,8 @@ a:focus-visible, button:focus-visible {
 .nav-links a.active::after {
   content: "";
   position: absolute;
-  left: 0.72rem;
-  right: 0.72rem;
+  left: 0.62rem;
+  right: 0.62rem;
   bottom: 2px;
   height: 2px;
   background: var(--cyan);
@@ -207,31 +209,68 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 0 8px var(--cyan);
 }
 
-.nav-socials {
+.nav-actions {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
+}
+
+/* Selector ES | EN */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.74rem;
+}
+
+.lang-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.18s ease, background 0.18s ease;
+}
+
+.lang-btn:hover {
+  color: var(--ink);
+}
+
+.lang-btn.active {
+  background: rgba(0, 240, 255, 0.16);
+  color: var(--cyan);
+  box-shadow: inset 0 0 0 1px rgba(0, 240, 255, 0.35);
 }
 
 .social-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.42rem 0.78rem;
+  gap: 0.4rem;
+  padding: 0.4rem 0.68rem;
   border-radius: 8px;
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 500;
   color: var(--ink);
   background: rgba(15, 23, 42, 0.75);
   border: 1px solid var(--line);
   cursor: pointer;
+  white-space: nowrap;
   transition: transform 0.18s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .social-pill svg {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
 }
 
@@ -242,8 +281,15 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 0 16px rgba(0, 240, 255, 0.16);
 }
 
-.social-pill.icon-only {
-  padding: 0.46rem;
+.social-pill.cv-pill {
+  background: rgba(0, 240, 255, 0.12);
+  border-color: rgba(0, 240, 255, 0.38);
+  color: var(--cyan);
+}
+
+.social-pill.cv-pill:hover {
+  background: rgba(0, 240, 255, 0.22);
+  border-color: var(--cyan);
 }
 
 .menu-toggle {
@@ -272,7 +318,7 @@ a:focus-visible, button:focus-visible {
   left: 0;
   right: 0;
   z-index: 99;
-  background: rgba(6, 10, 19, 0.96);
+  background: rgba(6, 10, 19, 0.97);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--line-strong);
@@ -284,17 +330,27 @@ a:focus-visible, button:focus-visible {
   display: block;
 }
 
+.mobile-top-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
 .mobile-nav-list {
   list-style: none;
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.15rem;
   padding: 0;
   display: grid;
-  gap: 0.35rem;
+  gap: 0.3rem;
 }
 
 .mobile-nav-list a {
   display: block;
-  padding: 0.65rem 0.85rem;
+  padding: 0.6rem 0.85rem;
   border-radius: 8px;
   color: var(--ink);
   font-weight: 500;
@@ -310,7 +366,7 @@ a:focus-visible, button:focus-visible {
 .mobile-socials {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.6rem;
+  gap: 0.55rem;
   padding-top: 1rem;
   border-top: 1px solid var(--line);
 }
@@ -321,8 +377,8 @@ a:focus-visible, button:focus-visible {
   font-size: 0.82rem;
 }
 
-@media (max-width: 880px) {
-  .nav-links, .nav-socials {
+@media (max-width: 1024px) {
+  .nav-links, .nav-actions {
     display: none;
   }
   .menu-toggle {
@@ -335,7 +391,7 @@ a:focus-visible, button:focus-visible {
   min-height: 78vh;
   display: flex;
   align-items: center;
-  padding: calc(var(--nav-h) + 3.5rem) 0 3.5rem;
+  padding: calc(var(--nav-h) + 3.5rem) 0 3.25rem;
 }
 
 .status-badge {
@@ -408,9 +464,238 @@ a:focus-visible, button:focus-visible {
   font-weight: 500;
 }
 
+/* ================= BOTÓN DISCRETO & MODAL PRIVACY CHECK ================= */
+.stealth-fp-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.24rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  color: var(--dim);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.74rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stealth-fp-btn:hover {
+  color: var(--cyan);
+  border-color: var(--line-strong);
+  background: rgba(0, 240, 255, 0.08);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.14);
+}
+
+.privacy-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 180;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(2, 5, 10, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.privacy-modal-backdrop.open {
+  display: flex;
+}
+
+.privacy-modal {
+  position: relative;
+  width: 100%;
+  max-width: 48rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 14px;
+  background: rgba(8, 13, 24, 0.96);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 28px rgba(0, 240, 255, 0.15);
+  padding: 1.35rem 1.45rem 1.45rem;
+}
+
+.privacy-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.privacy-modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.privacy-modal-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.privacy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 5px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--cyan);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.modal-close-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.modal-close-btn:hover {
+  color: var(--cyan);
+  border-color: var(--line-strong);
+  background: rgba(0, 240, 255, 0.1);
+}
+
+.privacy-intro {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.local-guarantee {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.74rem;
+  color: #6EE7B7;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+}
+
+.fp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+@media (max-width: 48rem) {
+  .fp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 32rem) {
+  .fp-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fp-item {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+}
+
+.fp-label {
+  display: block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sky);
+  margin-bottom: 0.25rem;
+}
+
+.fp-val {
+  display: block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.84rem;
+  color: var(--ink);
+  word-break: break-word;
+}
+
+.fp-ua-box {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.fp-ua-box code {
+  display: block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  color: #CBD5E1;
+  word-break: break-all;
+  line-height: 1.5;
+}
+
+.privacy-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed rgba(56, 189, 248, 0.2);
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.copy-json-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.75rem;
+  border-radius: 7px;
+  background: rgba(0, 240, 255, 0.09);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--cyan);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.copy-json-btn:hover {
+  background: rgba(0, 240, 255, 0.18);
+  border-color: var(--cyan);
+}
+
 /* ================= SECCIONES & PANELES ================= */
 section {
-  padding: 3.25rem 0;
+  padding: 3.1rem 0;
 }
 
 .section-head {
@@ -810,10 +1095,11 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-/* Notificación flotante al copiar correo */
+/* Notificación flotante HUD */
 .toast {
   position: fixed;
   bottom: 1.5rem;
@@ -855,32 +1141,48 @@ footer {
     </a>
 
     <ul class="nav-links" id="nav-links">
-      <li><a href="#perfil">Perfil</a></li>
-      <li><a href="#habilidades">Habilidades</a></li>
-      <li><a href="#experiencia">Experiencia</a></li>
-      <li><a href="#proyectos">Proyectos</a></li>
-      <li><a href="#educacion">Educación</a></li>
+      <li><a href="#perfil" data-i18n="nav.profile">Perfil</a></li>
+      <li><a href="#habilidades" data-i18n="nav.skills">Habilidades</a></li>
+      <li><a href="#experiencia" data-i18n="nav.experience">Experiencia</a></li>
+      <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+      <li><a href="#educacion" data-i18n="nav.education">Educación</a></li>
     </ul>
 
-    <div class="nav-socials" aria-label="Enlaces directos y redes">
+    <div class="nav-actions" aria-label="Acciones rápidas, idioma y redes">
+      <!-- Selector de idioma instantáneo ES | EN -->
+      <div class="lang-switch" role="group" aria-label="Selector de idioma">
+        <button type="button" class="lang-btn active" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+
+      <!-- Descarga directa de CV en PDF -->
+      <button type="button" class="social-pill cv-pill cv-download-trigger" title="Descargar CV en PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span data-i18n="nav.cv">Descargar CV</span>
+      </button>
+
+      <!-- Gmail -->
       <a class="social-pill gmail-trigger" href="mailto:idesquenazi@gmail.com" title="Enviar correo o copiar idesquenazi@gmail.com" aria-label="Gmail: idesquenazi@gmail.com">
-        <!-- Logo Gmail -->
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
         </svg>
         <span>Gmail</span>
       </a>
 
+      <!-- LinkedIn -->
       <a class="social-pill" href="https://www.linkedin.com/in/ilan-esquenazi-89016a236" target="_blank" rel="noopener noreferrer" title="Perfil de LinkedIn" aria-label="LinkedIn de Ilan Esquenazi">
-        <!-- Logo LinkedIn -->
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path fill="#0A66C2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
         </svg>
         <span>LinkedIn</span>
       </a>
 
+      <!-- GitHub -->
       <a class="social-pill" href="https://github.com/ilan484" target="_blank" rel="noopener noreferrer" title="Repositorios en GitHub" aria-label="GitHub de Ilan Esquenazi">
-        <!-- Logo GitHub -->
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path fill="#F1F5F9" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
         </svg>
@@ -900,13 +1202,29 @@ footer {
 
 <!-- MENÚ DESPLEGABLE MÓVIL -->
 <div class="mobile-drawer" id="mobile-drawer" aria-label="Menú móvil">
+  <div class="mobile-top-controls">
+    <div class="lang-switch" role="group" aria-label="Selector de idioma móvil">
+      <button type="button" class="lang-btn active" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <button type="button" class="social-pill cv-pill cv-download-trigger">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      <span data-i18n="nav.cv">Descargar CV</span>
+    </button>
+  </div>
+
   <ul class="mobile-nav-list">
-    <li><a href="#perfil">01 // Perfil</a></li>
-    <li><a href="#habilidades">02 // Habilidades</a></li>
-    <li><a href="#experiencia">03 // Experiencia</a></li>
-    <li><a href="#proyectos">04 // Proyectos</a></li>
-    <li><a href="#educacion">05 // Educación</a></li>
+    <li><a href="#perfil" data-i18n="mnav.profile">01 // Perfil</a></li>
+    <li><a href="#habilidades" data-i18n="mnav.skills">02 // Habilidades</a></li>
+    <li><a href="#experiencia" data-i18n="mnav.experience">03 // Experiencia</a></li>
+    <li><a href="#proyectos" data-i18n="mnav.projects">04 // Proyectos</a></li>
+    <li><a href="#educacion" data-i18n="mnav.education">05 // Educación</a></li>
   </ul>
+
   <div class="mobile-socials">
     <a class="social-pill gmail-trigger" href="mailto:idesquenazi@gmail.com">
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -934,15 +1252,15 @@ footer {
   <div class="wrap">
     <div class="status-badge">
       <span class="status-dot" aria-hidden="true"></span>
-      <span>SYS.ONLINE // CÓRDOBA, ARGENTINA</span>
+      <span data-i18n="hero.status">SYS.ONLINE // CÓRDOBA, ARGENTINA</span>
     </div>
     <h1>Ilan Esquenazi</h1>
-    <p class="role">Estudiante de Seguridad Informática y Soporte Técnico</p>
-    <p class="lead">Busco un rol inicial en ciberseguridad, gestión de identidades y accesos (IAM) o infraestructura IT. Me interesa entender cómo se rompen los sistemas para poder protegerlos.</p>
+    <p class="role" data-i18n="hero.role">Estudiante de Seguridad Informática y Soporte Técnico</p>
+    <p class="lead" data-i18n="hero.lead">Busco un rol inicial en ciberseguridad, gestión de identidades y accesos (IAM) o infraestructura IT. Me interesa entender cómo se rompen los sistemas para poder protegerlos.</p>
     <div class="hud-strip" role="region" aria-label="Resumen rápido">
-      <span><strong>FOCO:</strong> Ciberseguridad · IAM · Redes</span>
-      <span><strong>INGLÉS:</strong> B2 (Cambridge FCE)</span>
-      <span><strong>BASE:</strong> Córdoba, AR</span>
+      <span data-i18n-html="hud.focus"><strong>FOCO:</strong> Ciberseguridad · IAM · Redes</span>
+      <span data-i18n-html="hud.english"><strong>INGLÉS:</strong> B2 (Cambridge FCE)</span>
+      <span data-i18n-html="hud.base"><strong>BASE:</strong> Córdoba, AR</span>
     </div>
   </div>
 </header>
@@ -953,10 +1271,10 @@ footer {
     <div class="wrap">
       <div class="section-head">
         <span class="section-index">01 //</span>
-        <h2>Perfil</h2>
+        <h2 data-i18n="sec.profile">Perfil</h2>
       </div>
       <div class="panel">
-        <p>Tengo experiencia práctica en <strong>diagnóstico de redes, control de accesos, administración de Linux y fundamentos de ciberseguridad</strong>. Trabajo con evaluación de vulnerabilidades, redes TCP/IP y scripting. Mi nivel de inglés es <strong>B2 (Cambridge FCE)</strong>. Quiero aplicar la resolución analítica de problemas para contribuir a la seguridad de sistemas empresariales.</p>
+        <p data-i18n-html="profile.body">Tengo experiencia práctica en <strong>diagnóstico de redes, control de accesos, administración de Linux y fundamentos de ciberseguridad</strong>. Trabajo con evaluación de vulnerabilidades, redes TCP/IP y scripting. Mi nivel de inglés es <strong>B2 (Cambridge FCE)</strong>. Quiero aplicar la resolución analítica de problemas para contribuir a la seguridad de sistemas empresariales.</p>
       </div>
     </div>
   </section>
@@ -966,63 +1284,63 @@ footer {
     <div class="wrap">
       <div class="section-head">
         <span class="section-index">02 //</span>
-        <h2>Habilidades</h2>
+        <h2 data-i18n="sec.skills">Habilidades</h2>
       </div>
       <div class="skills-grid">
         <div class="skill-card">
-          <h3>Ciberseguridad</h3>
+          <h3 data-i18n="skills.sec.title">Ciberseguridad</h3>
           <div class="tags">
-            <span class="tag">Evaluación de vulnerabilidades</span>
+            <span class="tag" data-i18n="skills.sec.1">Evaluación de vulnerabilidades</span>
             <span class="tag">OSINT</span>
-            <span class="tag">Enumeración de subdominios</span>
-            <span class="tag">Identificación de tecnologías web</span>
-            <span class="tag">Gestión de privilegios y accesos</span>
+            <span class="tag" data-i18n="skills.sec.2">Enumeración de subdominios</span>
+            <span class="tag" data-i18n="skills.sec.3">Identificación de tecnologías web</span>
+            <span class="tag" data-i18n="skills.sec.4">Gestión de privilegios y accesos</span>
             <span class="tag">Nmap</span>
             <span class="tag">Burp Suite</span>
           </div>
         </div>
 
         <div class="skill-card">
-          <h3>Redes</h3>
+          <h3 data-i18n="skills.net.title">Redes</h3>
           <div class="tags">
             <span class="tag">TCP/IP</span>
             <span class="tag">UDP</span>
-            <span class="tag">Modelo OSI</span>
+            <span class="tag" data-i18n="skills.net.1">Modelo OSI</span>
             <span class="tag">Subnetting</span>
-            <span class="tag">Direccionamiento MAC/IP</span>
-            <span class="tag">Puertos comunes</span>
-            <span class="tag">Diagnóstico de conectividad</span>
+            <span class="tag" data-i18n="skills.net.2">Direccionamiento MAC/IP</span>
+            <span class="tag" data-i18n="skills.net.3">Puertos comunes</span>
+            <span class="tag" data-i18n="skills.net.4">Diagnóstico de conectividad</span>
           </div>
         </div>
 
         <div class="skill-card">
-          <h3>Sistemas</h3>
+          <h3 data-i18n="skills.sys.title">Sistemas</h3>
           <div class="tags">
-            <span class="tag">Administración de Linux</span>
+            <span class="tag" data-i18n="skills.sys.1">Administración de Linux</span>
             <span class="tag">Windows</span>
             <span class="tag">VMware</span>
             <span class="tag">VirtualBox</span>
-            <span class="tag">Scripting en Bash</span>
+            <span class="tag" data-i18n="skills.sys.2">Scripting en Bash</span>
           </div>
         </div>
 
         <div class="skill-card">
-          <h3>Programación</h3>
+          <h3 data-i18n="skills.dev.title">Programación</h3>
           <div class="tags">
             <span class="tag">C</span>
             <span class="tag">Python</span>
             <span class="tag">Haskell</span>
-            <span class="tag">Assembler básico</span>
+            <span class="tag" data-i18n="skills.dev.1">Assembler básico</span>
           </div>
         </div>
 
         <div class="skill-card full">
-          <h3>Habilidades blandas</h3>
+          <h3 data-i18n="skills.soft.title">Habilidades blandas</h3>
           <div class="tags">
-            <span class="tag">Colaboración interdisciplinaria</span>
-            <span class="tag">Resolución de incidentes bajo presión</span>
-            <span class="tag">Documentación técnica</span>
-            <span class="tag">Pensamiento analítico</span>
+            <span class="tag" data-i18n="skills.soft.1">Colaboración interdisciplinaria</span>
+            <span class="tag" data-i18n="skills.soft.2">Resolución de incidentes bajo presión</span>
+            <span class="tag" data-i18n="skills.soft.3">Documentación técnica</span>
+            <span class="tag" data-i18n="skills.soft.4">Pensamiento analítico</span>
           </div>
         </div>
       </div>
@@ -1034,31 +1352,31 @@ footer {
     <div class="wrap">
       <div class="section-head">
         <span class="section-index">03 //</span>
-        <h2>Experiencia</h2>
+        <h2 data-i18n="sec.experience">Experiencia</h2>
       </div>
       <div class="timeline">
         <article class="job">
           <div class="job-top">
-            <h3>Especialista en Soporte Técnico</h3>
-            <span class="job-date">DIC 2025 — ABR 2026</span>
+            <h3 data-i18n="exp.geex.role">Especialista en Soporte Técnico</h3>
+            <span class="job-date" data-i18n="exp.geex.date">DIC 2025 — ABR 2026</span>
           </div>
           <p class="job-company">Geex</p>
           <ul>
-            <li>Diagnostiqué y resolví incidentes de hardware, software y conectividad de red, con altos índices de resolución en el primer contacto.</li>
-            <li>Gestioné permisos de cuentas, configuraciones de sistemas y soporte técnico remoto.</li>
-            <li>Documenté incidencias recurrentes y procedimientos de escalamiento.</li>
+            <li data-i18n="exp.geex.1">Diagnostiqué y resolví incidentes de hardware, software y conectividad de red, con altos índices de resolución en el primer contacto.</li>
+            <li data-i18n="exp.geex.2">Gestioné permisos de cuentas, configuraciones de sistemas y soporte técnico remoto.</li>
+            <li data-i18n="exp.geex.3">Documenté incidencias recurrentes y procedimientos de escalamiento.</li>
           </ul>
         </article>
 
         <article class="job">
           <div class="job-top">
-            <h3>Pasante de Ciberseguridad</h3>
+            <h3 data-i18n="exp.ing.role">Pasante de Ciberseguridad</h3>
             <span class="job-date">SEP — NOV 2022</span>
           </div>
           <p class="job-company">Ingeniar S.A.</p>
           <ul>
-            <li>Asistí al equipo de seguridad en evaluaciones básicas de vulnerabilidades, monitoreo de sistemas y controles de seguridad de red.</li>
-            <li>Aprendí sobre políticas de seguridad corporativa, controles de acceso y mitigación de amenazas.</li>
+            <li data-i18n="exp.ing.1">Asistí al equipo de seguridad en evaluaciones básicas de vulnerabilidades, monitoreo de sistemas y controles de seguridad de red.</li>
+            <li data-i18n="exp.ing.2">Aprendí sobre políticas de seguridad corporativa, controles de acceso y mitigación de amenazas.</li>
           </ul>
         </article>
       </div>
@@ -1070,16 +1388,16 @@ footer {
     <div class="wrap">
       <div class="section-head">
         <span class="section-index">04 //</span>
-        <h2>Proyectos</h2>
+        <h2 data-i18n="sec.projects">Proyectos</h2>
       </div>
       <div class="projects-grid">
         <article class="project">
           <div>
             <div class="project-head">
-              <h3>Sitios web seguros para negocios chicos</h3>
-              <span class="status">● En progreso</span>
+              <h3 data-i18n="proj.web.title">Sitios web seguros para negocios chicos</h3>
+              <span class="status" data-i18n="proj.status">● En progreso</span>
             </div>
-            <p>Páginas y menús QR para cafeterías y almacenes, con HTTPS, backups y revisión de seguridad básica.</p>
+            <p data-i18n="proj.web.desc">Páginas y menús QR para cafeterías y almacenes, con HTTPS, backups y revisión de seguridad básica.</p>
           </div>
           <div class="tech-list">
             <span class="tech-badge">HTML</span>
@@ -1091,10 +1409,10 @@ footer {
         <article class="project">
           <div>
             <div class="project-head">
-              <h3>Laboratorio de práctica</h3>
-              <span class="status">● En progreso</span>
+              <h3 data-i18n="proj.lab.title">Laboratorio de práctica</h3>
+              <span class="status" data-i18n="proj.status">● En progreso</span>
             </div>
-            <p>Entorno propio para practicar reconocimiento y análisis de vulnerabilidades, y documentar lo aprendido.</p>
+            <p data-i18n="proj.lab.desc">Entorno propio para practicar reconocimiento y análisis de vulnerabilidades, y documentar lo aprendido.</p>
           </div>
           <div class="tech-list">
             <span class="tech-badge">Linux</span>
@@ -1112,19 +1430,19 @@ footer {
     <div class="wrap">
       <div class="section-head">
         <span class="section-index">05 //</span>
-        <h2>Educación</h2>
+        <h2 data-i18n="sec.education">Educación</h2>
       </div>
       <ul class="edu-list">
         <li class="edu-item">
           <div>
-            <strong>Licenciatura en Seguridad Informática</strong>
+            <strong data-i18n="edu.1.title">Licenciatura en Seguridad Informática</strong>
             <span>Universidad Siglo 21</span>
           </div>
-          <span class="edu-period">2025 — ACTUALIDAD</span>
+          <span class="edu-period" data-i18n="edu.1.period">2025 — ACTUALIDAD</span>
         </li>
         <li class="edu-item">
           <div>
-            <strong>Ciencias de la Computación</strong>
+            <strong data-i18n="edu.2.title">Ciencias de la Computación</strong>
             <span>Universidad Nacional de Córdoba (UNC)</span>
           </div>
           <span class="edu-period">2023 — 2024</span>
@@ -1132,9 +1450,9 @@ footer {
         <li class="edu-item">
           <div>
             <strong>Cambridge English: First Certificate (FCE)</strong>
-            <span>Inglés intermedio alto</span>
+            <span data-i18n="edu.3.sub">Inglés intermedio alto</span>
           </div>
-          <span class="edu-period">CERTIFICADO B2</span>
+          <span class="edu-period" data-i18n="edu.3.period">CERTIFICADO B2</span>
         </li>
       </ul>
     </div>
@@ -1145,7 +1463,7 @@ footer {
     <div class="wrap">
       <div class="section-head">
         <span class="section-index">06 //</span>
-        <h2>Canales de Contacto</h2>
+        <h2 data-i18n="sec.contact">Canales de Contacto</h2>
       </div>
       <div class="contact-grid">
         <a class="contact-card gmail-trigger" href="mailto:idesquenazi@gmail.com" title="Copiar o escribir a idesquenazi@gmail.com">
@@ -1191,19 +1509,562 @@ footer {
 <div class="wrap">
   <footer>
     <span>© 2026 Ilan Esquenazi // Córdoba, Argentina</span>
-    <span>SEC-PORTFOLIO v2.0</span>
+    <div style="display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap;">
+      <button type="button" class="stealth-fp-btn" id="privacy-toggle" aria-haspopup="dialog" aria-controls="privacy-modal" title="Auditar huella del navegador">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <span data-i18n="privacy.btnLabel">[ privacy_check ]</span>
+      </button>
+      <span>SEC-PORTFOLIO v2.4</span>
+    </div>
   </footer>
 </div>
 
-<!-- Notificación HUD al interactuar con Gmail -->
+<!-- MODAL OCULTO: INSPECTOR DE HUELLA DEL NAVEGADOR -->
+<div class="privacy-modal-backdrop" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title">
+  <div class="privacy-modal">
+    <div class="privacy-modal-head">
+      <div class="privacy-modal-title-wrap">
+        <span class="privacy-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span>PRIVACY CHECK</span>
+        </span>
+        <h3 class="privacy-modal-title" id="privacy-modal-title" data-i18n="privacy.modalTitle">Inspector de huella del navegador</h3>
+      </div>
+      <button type="button" class="modal-close-btn" id="privacy-close" aria-label="Cerrar inspector">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="privacy-intro">
+      <span data-i18n="privacy.desc">Cada vez que visitás un sitio web, tu navegador comparte metadatos técnicos que permiten perfilar tu dispositivo sin necesidad de cookies.</span>
+      <span class="local-guarantee" data-i18n="privacy.local">● 100% local · Cero datos enviados</span>
+    </div>
+
+    <div class="fp-grid">
+      <div class="fp-item">
+        <span class="fp-label" data-i18n="privacy.lblOs">Sistema / Plataforma</span>
+        <span class="fp-val" id="fp-os">—</span>
+      </div>
+      <div class="fp-item">
+        <span class="fp-label" data-i18n="privacy.lblScreen">Resolución &amp; Viewport</span>
+        <span class="fp-val" id="fp-screen">—</span>
+      </div>
+      <div class="fp-item">
+        <span class="fp-label" data-i18n="privacy.lblTz">Zona Horaria</span>
+        <span class="fp-val" id="fp-tz">—</span>
+      </div>
+      <div class="fp-item">
+        <span class="fp-label" data-i18n="privacy.lblLang">Idiomas Detectados</span>
+        <span class="fp-val" id="fp-lang">—</span>
+      </div>
+      <div class="fp-item">
+        <span class="fp-label" data-i18n="privacy.lblHw">Hardware (CPU / RAM)</span>
+        <span class="fp-val" id="fp-hw">—</span>
+      </div>
+      <div class="fp-item">
+        <span class="fp-label" data-i18n="privacy.lblHash">Firma Efímera (FNV-1a)</span>
+        <span class="fp-val" id="fp-hash" style="color: var(--cyan);">—</span>
+      </div>
+    </div>
+
+    <div class="fp-ua-box">
+      <span class="fp-label">User-Agent String</span>
+      <code id="fp-ua">—</code>
+    </div>
+
+    <div class="privacy-footer">
+      <span data-i18n-html="privacy.tip"><strong>Consejo defensivo:</strong> Usá navegadores con protección contra fingerprinting (Firefox ETP / Brave) y evitá extensiones innecesarias.</span>
+      <button type="button" class="copy-json-btn" id="copy-fp-btn">
+        <span data-i18n="privacy.copyBtn">Copiar reporte JSON</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Notificación HUD -->
 <div class="toast" id="toast" role="status" aria-live="polite">
   <span style="color:#10B981;">✓</span>
-  <span>Correo copiado: idesquenazi@gmail.com</span>
+  <span id="toast-text">Correo copiado: idesquenazi@gmail.com</span>
 </div>
 
 <script>
 (function () {
-  /* 1. Barra superior dinámica y menú móvil */
+  /* ================= 1. DICCIONARIO BILINGÜE ES / EN ================= */
+  var i18n = {
+    es: {
+      "nav.profile": "Perfil",
+      "nav.skills": "Habilidades",
+      "nav.experience": "Experiencia",
+      "nav.projects": "Proyectos",
+      "nav.education": "Educación",
+      "nav.cv": "Descargar CV",
+      "mnav.profile": "01 // Perfil",
+      "mnav.skills": "02 // Habilidades",
+      "mnav.experience": "03 // Experiencia",
+      "mnav.projects": "04 // Proyectos",
+      "mnav.education": "05 // Educación",
+      "hero.status": "SYS.ONLINE // CÓRDOBA, ARGENTINA",
+      "hero.role": "Estudiante de Seguridad Informática y Soporte Técnico",
+      "hero.lead": "Busco un rol inicial en ciberseguridad, gestión de identidades y accesos (IAM) o infraestructura IT. Me interesa entender cómo se rompen los sistemas para poder protegerlos.",
+      "hud.focus": "<strong>FOCO:</strong> Ciberseguridad · IAM · Redes",
+      "hud.english": "<strong>INGLÉS:</strong> B2 (Cambridge FCE)",
+      "hud.base": "<strong>BASE:</strong> Córdoba, AR",
+      "sec.profile": "Perfil",
+      "profile.body": "Tengo experiencia práctica en <strong>diagnóstico de redes, control de accesos, administración de Linux y fundamentos de ciberseguridad</strong>. Trabajo con evaluación de vulnerabilidades, redes TCP/IP y scripting. Mi nivel de inglés es <strong>B2 (Cambridge FCE)</strong>. Quiero aplicar la resolución analítica de problemas para contribuir a la seguridad de sistemas empresariales.",
+      "sec.skills": "Habilidades",
+      "skills.sec.title": "Ciberseguridad",
+      "skills.sec.1": "Evaluación de vulnerabilidades",
+      "skills.sec.2": "Enumeración de subdominios",
+      "skills.sec.3": "Identificación de tecnologías web",
+      "skills.sec.4": "Gestión de privilegios y accesos",
+      "skills.net.title": "Redes",
+      "skills.net.1": "Modelo OSI",
+      "skills.net.2": "Direccionamiento MAC/IP",
+      "skills.net.3": "Puertos comunes",
+      "skills.net.4": "Diagnóstico de conectividad",
+      "skills.sys.title": "Sistemas",
+      "skills.sys.1": "Administración de Linux",
+      "skills.sys.2": "Scripting en Bash",
+      "skills.dev.title": "Programación",
+      "skills.dev.1": "Assembler básico",
+      "skills.soft.title": "Habilidades blandas",
+      "skills.soft.1": "Colaboración interdisciplinaria",
+      "skills.soft.2": "Resolución de incidentes bajo presión",
+      "skills.soft.3": "Documentación técnica",
+      "skills.soft.4": "Pensamiento analítico",
+      "sec.experience": "Experiencia",
+      "exp.geex.role": "Especialista en Soporte Técnico",
+      "exp.geex.date": "DIC 2025 — ABR 2026",
+      "exp.geex.1": "Diagnostiqué y resolví incidentes de hardware, software y conectividad de red, con altos índices de resolución en el primer contacto.",
+      "exp.geex.2": "Gestioné permisos de cuentas, configuraciones de sistemas y soporte técnico remoto.",
+      "exp.geex.3": "Documenté incidencias recurrentes y procedimientos de escalamiento.",
+      "exp.ing.role": "Pasante de Ciberseguridad",
+      "exp.ing.1": "Asistí al equipo de seguridad en evaluaciones básicas de vulnerabilidades, monitoreo de sistemas y controles de seguridad de red.",
+      "exp.ing.2": "Aprendí sobre políticas de seguridad corporativa, controles de acceso y mitigación de amenazas.",
+      "sec.projects": "Proyectos",
+      "proj.status": "● En progreso",
+      "proj.web.title": "Sitios web seguros para negocios chicos",
+      "proj.web.desc": "Páginas y menús QR para cafeterías y almacenes, con HTTPS, backups y revisión de seguridad básica.",
+      "proj.lab.title": "Laboratorio de práctica",
+      "proj.lab.desc": "Entorno propio para practicar reconocimiento y análisis de vulnerabilidades, y documentar lo aprendido.",
+      "sec.education": "Educación",
+      "edu.1.title": "Licenciatura en Seguridad Informática",
+      "edu.1.period": "2025 — ACTUALIDAD",
+      "edu.2.title": "Ciencias de la Computación",
+      "edu.3.sub": "Inglés intermedio alto",
+      "edu.3.period": "CERTIFICADO B2",
+      "sec.contact": "Canales de Contacto",
+      "privacy.btnLabel": "[ privacy_check ]",
+      "privacy.modalTitle": "Inspector de huella del navegador",
+      "privacy.desc": "Cada vez que visitás un sitio web, tu navegador comparte metadatos técnicos que permiten perfilar tu dispositivo sin necesidad de cookies.",
+      "privacy.local": "● 100% local · Cero datos enviados",
+      "privacy.lblOs": "Sistema / Plataforma",
+      "privacy.lblScreen": "Resolución & Viewport",
+      "privacy.lblTz": "Zona Horaria",
+      "privacy.lblLang": "Idiomas Detectados",
+      "privacy.lblHw": "Hardware (CPU / RAM)",
+      "privacy.lblHash": "Firma Efímera (FNV-1a)",
+      "privacy.tip": "<strong>Consejo defensivo:</strong> Usá navegadores con protección contra fingerprinting (Firefox ETP / Brave) y evitá extensiones innecesarias.",
+      "privacy.copyBtn": "Copiar reporte JSON",
+      "toast.email": "Correo copiado: idesquenazi@gmail.com",
+      "toast.cv": "Descargando CV (ES) en PDF...",
+      "toast.fp": "Reporte JSON de huella copiado al portapapeles"
+    },
+    en: {
+      "nav.profile": "Profile",
+      "nav.skills": "Skills",
+      "nav.experience": "Experience",
+      "nav.projects": "Projects",
+      "nav.education": "Education",
+      "nav.cv": "Download CV",
+      "mnav.profile": "01 // Profile",
+      "mnav.skills": "02 // Skills",
+      "mnav.experience": "03 // Experience",
+      "mnav.projects": "04 // Projects",
+      "mnav.education": "05 // Education",
+      "hero.status": "SYS.ONLINE // CÓRDOBA, ARGENTINA",
+      "hero.role": "Information Security Student & Technical Support Specialist",
+      "hero.lead": "Seeking an entry-level role in cybersecurity, Identity & Access Management (IAM), or IT infrastructure. I am driven to understand how systems break in order to secure them.",
+      "hud.focus": "<strong>FOCUS:</strong> Cybersecurity · IAM · Networking",
+      "hud.english": "<strong>ENGLISH:</strong> B2 (Cambridge FCE)",
+      "hud.base": "<strong>BASE:</strong> Córdoba, AR",
+      "sec.profile": "Profile",
+      "profile.body": "Hands-on experience in <strong>network troubleshooting, access control, Linux administration, and cybersecurity fundamentals</strong>. Skilled in vulnerability assessment, TCP/IP networking, and scripting, with <strong>B2 Upper-Intermediate English proficiency (Cambridge FCE)</strong>. Looking to apply analytical problem-solving to help secure enterprise systems.",
+      "sec.skills": "Skills",
+      "skills.sec.title": "Cybersecurity",
+      "skills.sec.1": "Vulnerability Assessment",
+      "skills.sec.2": "Subdomain Enumeration",
+      "skills.sec.3": "Web Technology Fingerprinting",
+      "skills.sec.4": "User Privilege & Access Management",
+      "skills.net.title": "Networking",
+      "skills.net.1": "OSI Model",
+      "skills.net.2": "MAC/IP Addressing",
+      "skills.net.3": "Common Ports",
+      "skills.net.4": "Connectivity Diagnostics",
+      "skills.sys.title": "Systems",
+      "skills.sys.1": "Linux Administration",
+      "skills.sys.2": "Bash Scripting",
+      "skills.dev.title": "Programming",
+      "skills.dev.1": "Basic Assembly",
+      "skills.soft.title": "Soft Skills",
+      "skills.soft.1": "Cross-functional Collaboration",
+      "skills.soft.2": "Incident Resolution under Pressure",
+      "skills.soft.3": "Technical Documentation",
+      "skills.soft.4": "Analytical Thinking",
+      "sec.experience": "Experience",
+      "exp.geex.role": "Technical Support Specialist",
+      "exp.geex.date": "DEC 2025 — APR 2026",
+      "exp.geex.1": "Diagnosed and resolved hardware, software, and network connectivity incidents for end-users, maintaining high first-contact resolution rates.",
+      "exp.geex.2": "Managed user account permissions, system configurations, and remote troubleshooting workflows.",
+      "exp.geex.3": "Documented recurring technical issues and escalation procedures to streamline support operations.",
+      "exp.ing.role": "Cybersecurity Intern",
+      "exp.ing.1": "Assisted the security team in basic vulnerability assessments, system monitoring, and network security checks.",
+      "exp.ing.2": "Gained foundational exposure to corporate security policies, access controls, and threat mitigation workflows.",
+      "sec.projects": "Projects",
+      "proj.status": "● In progress",
+      "proj.web.title": "Secure Websites for Small Businesses",
+      "proj.web.desc": "Websites and QR menus for cafés and local stores, featuring HTTPS, backups, and baseline security hardening.",
+      "proj.lab.title": "Security Practice Lab",
+      "proj.lab.desc": "Dedicated lab environment to practice reconnaissance and vulnerability analysis, documenting findings and methodologies.",
+      "sec.education": "Education",
+      "edu.1.title": "Bachelor's Degree in Information Security",
+      "edu.1.period": "2025 — PRESENT",
+      "edu.2.title": "Computer Science Studies",
+      "edu.3.sub": "Upper-Intermediate English",
+      "edu.3.period": "B2 CERTIFIED",
+      "sec.contact": "Contact Channels",
+      "privacy.btnLabel": "[ privacy_check ]",
+      "privacy.modalTitle": "Browser Fingerprint Inspector",
+      "privacy.desc": "Every time you visit a website, your browser exposes technical metadata that can profile your device without relying on cookies.",
+      "privacy.local": "● 100% local · Zero data transmitted",
+      "privacy.lblOs": "OS / Platform",
+      "privacy.lblScreen": "Resolution & Viewport",
+      "privacy.lblTz": "Timezone",
+      "privacy.lblLang": "Detected Languages",
+      "privacy.lblHw": "Hardware (CPU / RAM)",
+      "privacy.lblHash": "Ephemeral Signature (FNV-1a)",
+      "privacy.tip": "<strong>Defensive tip:</strong> Use browsers with built-in anti-fingerprinting (Firefox ETP / Brave) and minimize unnecessary extensions.",
+      "privacy.copyBtn": "Copy JSON report",
+      "toast.email": "Email copied: idesquenazi@gmail.com",
+      "toast.cv": "Downloading CV (EN) PDF...",
+      "toast.fp": "Fingerprint JSON report copied to clipboard"
+    }
+  };
+
+  var currentLang = "es";
+  try {
+    var savedLang = localStorage.getItem("ilan_portfolio_lang");
+    if (savedLang === "en" || savedLang === "es") {
+      currentLang = savedLang;
+    }
+  } catch (e) {}
+
+  var toast = document.getElementById("toast");
+  var toastText = document.getElementById("toast-text");
+  var toastTimer = null;
+
+  function showToast(message) {
+    toastText.textContent = message;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toast.classList.remove("show");
+    }, 3000);
+  }
+
+  function copyTextSafe(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).catch(function () {
+        fallbackCopy(text);
+      });
+    } else {
+      fallbackCopy(text);
+    }
+  }
+
+  function fallbackCopy(text) {
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    } catch (e) {}
+  }
+
+  function applyLanguage(lang) {
+    currentLang = lang === "en" ? "en" : "es";
+    document.documentElement.lang = currentLang;
+    document.title = currentLang === "en"
+      ? "Ilan Esquenazi | Information Security & IT"
+      : "Ilan Esquenazi | Seguridad Informática & IT";
+
+    try {
+      localStorage.setItem("ilan_portfolio_lang", currentLang);
+    } catch (e) {}
+
+    var dict = i18n[currentLang];
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n");
+      if (dict[key] !== undefined) {
+        el.textContent = dict[key];
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-html");
+      if (dict[key] !== undefined) {
+        el.innerHTML = dict[key];
+      }
+    });
+
+    document.querySelectorAll(".lang-btn").forEach(function (btn) {
+      var active = btn.getAttribute("data-lang") === currentLang;
+      btn.classList.toggle("active", active);
+      btn.setAttribute("aria-pressed", String(active));
+    });
+  }
+
+  document.querySelectorAll(".lang-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      applyLanguage(btn.getAttribute("data-lang"));
+    });
+  });
+
+  applyLanguage(currentLang);
+
+  /* ================= 2. DESCARGA DIRECTA DE CV EN PDF ================= */
+  function buildFallbackPdfBlob(lang) {
+    var lines = lang === "en" ? [
+      "ILAN ESQUENAZI",
+      "Cordoba, Argentina | +54 9 351 677-4219 | idesquenazi@gmail.com | ilan484.github.io",
+      "",
+      "PROFESSIONAL SUMMARY",
+      "Information Security student and Technical Support Specialist with hands-on experience",
+      "in network troubleshooting, access control, Linux administration, and cybersecurity",
+      "fundamentals. Skilled in vulnerability assessment, TCP/IP networking, and scripting,",
+      "with B2 Upper-Intermediate English proficiency (Cambridge FCE).",
+      "",
+      "CORE COMPETENCIES & TECHNICAL SKILLS",
+      "- Cybersecurity: Vulnerability Assessment, OSINT, Subdomain Enumeration, Nmap, Burp Suite",
+      "- Networking: TCP/IP, UDP, OSI Model, Subnetting, MAC/IP Addressing, Diagnostics",
+      "- Systems & Scripting: Linux Administration, Windows, VMware, VirtualBox, Bash",
+      "- Programming: C, Python, Haskell, Basic Assembly",
+      "",
+      "WORK EXPERIENCE",
+      "Technical Support Specialist | Geex (December 2025 - April 2026)",
+      "- Diagnosed and resolved hardware, software, and network connectivity incidents.",
+      "- Managed user account permissions, system configurations, and remote support.",
+      "Cybersecurity Intern | Ingeniar S.A. (September 2022 - November 2022)",
+      "- Assisted the security team in vulnerability assessments and network security checks.",
+      "",
+      "EDUCATION & CERTIFICATIONS",
+      "- Bachelor's Degree in Information Security - Universidad Siglo 21 (2025 - Present)",
+      "- Computer Science Studies - Universidad Nacional de Cordoba (UNC) (2023 - 2024)",
+      "- Cambridge English: First Certificate (FCE) - Level B2"
+    ] : [
+      "ILAN ESQUENAZI",
+      "Cordoba, Argentina | +54 9 351 677-4219 | idesquenazi@gmail.com | ilan484.github.io",
+      "",
+      "PERFIL PROFESIONAL",
+      "Estudiante de Seguridad Informatica y Especialista en Soporte Tecnico con experiencia",
+      "practica en diagnostico de redes, control de accesos, administracion de Linux y",
+      "fundamentos de ciberseguridad. Nivel de ingles B2 (Cambridge FCE).",
+      "",
+      "COMPETENCIAS CLAVE Y HABILIDADES TECNICAS",
+      "- Ciberseguridad: Evaluacion de vulnerabilidades, OSINT, Nmap, Burp Suite, IAM",
+      "- Redes: TCP/IP, UDP, Modelo OSI, Subnetting, Direccionamiento MAC/IP",
+      "- Sistemas y Scripting: Administracion de Linux, Windows, VMware, VirtualBox, Bash",
+      "- Programacion: C, Python, Haskell, Assembler basico",
+      "",
+      "EXPERIENCIA LABORAL",
+      "Especialista en Soporte Tecnico | Geex (Diciembre 2025 - Abril 2026)",
+      "- Diagnostico y resolucion de incidentes de hardware, software y conectividad de red.",
+      "- Gestion de permisos de cuentas, configuraciones y soporte tecnico remoto.",
+      "Pasante de Ciberseguridad | Ingeniar S.A. (Septiembre 2022 - Noviembre 2022)",
+      "- Asistencia en evaluaciones basicas de vulnerabilidades y controles de red.",
+      "",
+      "EDUCACION Y CERTIFICACIONES",
+      "- Licenciatura en Seguridad Informatica - Universidad Siglo 21 (2025 - Actualidad)",
+      "- Ciencias de la Computacion - Universidad Nacional de Cordoba (UNC) (2023 - 2024)",
+      "- Cambridge English: First Certificate (FCE) - Nivel B2"
+    ];
+
+    function escPdf(s) {
+      return s.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+    }
+
+    var contentStream = "BT\n/F1 10 Tf\n48 792 Td\n14 TL\n";
+    for (var i = 0; i < lines.length; i++) {
+      contentStream += "(" + escPdf(lines[i]) + ") Tj\nT*\n";
+    }
+    contentStream += "ET";
+
+    var objects = [
+      "1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n",
+      "2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n",
+      "3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>\nendobj\n",
+      "4 0 obj\n<< /Length " + contentStream.length + " >>\nstream\n" + contentStream + "\nendstream\nendobj\n",
+      "5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n"
+    ];
+
+    var pdf = "%PDF-1.4\n";
+    var offsets = [0];
+    for (var j = 0; j < objects.length; j++) {
+      offsets.push(pdf.length);
+      pdf += objects[j];
+    }
+    var xrefStart = pdf.length;
+    pdf += "xref\n0 " + (objects.length + 1) + "\n";
+    pdf += "0000000000 65535 f \n";
+    for (var k = 1; k < offsets.length; k++) {
+      pdf += ("0000000000" + offsets[k]).slice(-10) + " 00000 n \n";
+    }
+    pdf += "trailer\n<< /Size " + (objects.length + 1) + " /Root 1 0 R >>\nstartxref\n" + xrefStart + "\n%%EOF";
+
+    return new Blob([pdf], { type: "application/pdf" });
+  }
+
+  function triggerDownloadUrl(url, filename) {
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  function handleCvDownload() {
+    var fileName = currentLang === "en"
+      ? "CV_IlanEsquenazi_2026_EN.pdf"
+      : "CV Ilan Esquenazi 2026 (ES).pdf";
+
+    showToast(i18n[currentLang]["toast.cv"]);
+
+    fetch(encodeURI(fileName), { method: "HEAD" })
+      .then(function (res) {
+        var ct = (res.headers.get("content-type") || "").toLowerCase();
+        if (res.ok && ct.indexOf("text/html") === -1) {
+          triggerDownloadUrl(encodeURI(fileName), fileName);
+        } else {
+          var blobUrl = URL.createObjectURL(buildFallbackPdfBlob(currentLang));
+          triggerDownloadUrl(blobUrl, fileName);
+          setTimeout(function () { URL.revokeObjectURL(blobUrl); }, 5000);
+        }
+      })
+      .catch(function () {
+        var blobUrl = URL.createObjectURL(buildFallbackPdfBlob(currentLang));
+        triggerDownloadUrl(blobUrl, fileName);
+        setTimeout(function () { URL.revokeObjectURL(blobUrl); }, 5000);
+      });
+  }
+
+  document.querySelectorAll(".cv-download-trigger").forEach(function (btn) {
+    btn.addEventListener("click", handleCvDownload);
+  });
+
+  /* ================= 3. INSPECTOR DE HUELLA (MODAL OCULTO) ================= */
+  var privacyModal = document.getElementById("privacy-modal");
+  var privacyToggle = document.getElementById("privacy-toggle");
+  var privacyClose = document.getElementById("privacy-close");
+  var fingerprintData = {};
+
+  function computeFnv1a(str) {
+    var hash = 0x811c9dc5;
+    for (var i = 0; i < str.length; i++) {
+      hash ^= str.charCodeAt(i);
+      hash = (hash + ((hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24))) >>> 0;
+    }
+    return "0x" + ("00000000" + hash.toString(16).toUpperCase()).slice(-8);
+  }
+
+  function populateFingerprint() {
+    var ua = navigator.userAgent || "N/A";
+    var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "Desconocido";
+    var screenInfo = window.screen.width + "x" + window.screen.height + " (" + window.innerWidth + "x" + window.innerHeight + " vp, @" + (window.devicePixelRatio || 1) + "x)";
+    var tz = "UTC";
+    try {
+      tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+    } catch (e) {}
+    var langs = (navigator.languages && navigator.languages.length)
+      ? navigator.languages.join(", ")
+      : (navigator.language || "N/A");
+    var cores = navigator.hardwareConcurrency ? navigator.hardwareConcurrency + " cores" : "N/A";
+    var ram = navigator.deviceMemory ? navigator.deviceMemory + " GB RAM" : "";
+    var hwInfo = ram ? (cores + " · " + ram) : cores;
+
+    var rawSignature = [ua, platform, window.screen.width + "x" + window.screen.height, tz, langs, cores].join("|");
+    var hash = computeFnv1a(rawSignature);
+
+    fingerprintData = {
+      platform: platform,
+      screen: screenInfo,
+      timezone: tz,
+      languages: langs,
+      hardware: hwInfo,
+      ephemeralHash: hash,
+      userAgent: ua,
+      cookiesEnabled: navigator.cookieEnabled,
+      doNotTrack: navigator.doNotTrack || "unspecified"
+    };
+
+    document.getElementById("fp-os").textContent = platform;
+    document.getElementById("fp-screen").textContent = screenInfo;
+    document.getElementById("fp-tz").textContent = tz;
+    document.getElementById("fp-lang").textContent = langs;
+    document.getElementById("fp-hw").textContent = hwInfo;
+    document.getElementById("fp-hash").textContent = hash;
+    document.getElementById("fp-ua").textContent = ua;
+  }
+
+  function openPrivacyModal() {
+    populateFingerprint();
+    privacyModal.classList.add("open");
+    privacyClose.focus();
+  }
+
+  function closePrivacyModal() {
+    privacyModal.classList.remove("open");
+    privacyToggle.focus();
+  }
+
+  populateFingerprint();
+  window.addEventListener("resize", populateFingerprint, { passive: true });
+
+  privacyToggle.addEventListener("click", openPrivacyModal);
+  privacyClose.addEventListener("click", closePrivacyModal);
+
+  privacyModal.addEventListener("click", function (e) {
+    if (e.target === privacyModal) {
+      closePrivacyModal();
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && privacyModal.classList.contains("open")) {
+      closePrivacyModal();
+    }
+  });
+
+  document.getElementById("copy-fp-btn").addEventListener("click", function () {
+    var payload = JSON.stringify(fingerprintData, null, 2);
+    copyTextSafe(payload);
+    showToast(i18n[currentLang]["toast.fp"]);
+  });
+
+  /* ================= 4. BARRA SUPERIOR, MENÚ MÓVIL Y SCROLL-SPY ================= */
   var topbar = document.getElementById("topbar");
   var menuToggle = document.getElementById("menu-toggle");
   var mobileDrawer = document.getElementById("mobile-drawer");
@@ -1228,7 +2089,6 @@ footer {
     });
   });
 
-  /* 2. Resaltado automático de sección activa (Scroll-Spy) */
   var sectionIds = ["perfil", "habilidades", "experiencia", "proyectos", "educacion"];
   var navAnchors = document.querySelectorAll(".nav-links a, .mobile-nav-list a");
 
@@ -1254,29 +2114,66 @@ footer {
   window.addEventListener("scroll", updateActiveNav, { passive: true });
   updateActiveNav();
 
-  /* 3. Copiar correo al portapapeles al hacer clic en Gmail */
-  var toast = document.getElementById("toast");
-  var toastTimer = null;
-
   document.querySelectorAll(".gmail-trigger").forEach(function (el) {
     el.addEventListener("click", function () {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText("idesquenazi@gmail.com").catch(function () {});
-      }
-      toast.classList.add("show");
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(function () {
-        toast.classList.remove("show");
-      }, 3000);
+      copyTextSafe("idesquenazi@gmail.com");
+      showToast(i18n[currentLang]["toast.email"]);
     });
   });
 
-  /* 4. Fondo animado: red de nodos interconectados (Cyber Mesh) */
+  /* ================= 5. FONDO ANIMADO (CYBER MESH + 10% CYBER STREAM BOOT) ================= */
   var canvas = document.getElementById("net-canvas");
   var ctx = canvas.getContext("2d");
   var W, H, DPR, nodes = [];
   var mouse = { x: -9999, y: -9999 };
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Secuencia futurista (10% probabilidad al cargar): cascada digital hex/binaria + barrido HUD */
+  var MATRIX_CHARS = "01010110ABCDEF0x9F8E7D";
+  var matrixCols = [];
+  var cyberBootActive = !reduced && Math.random() < 0.10;
+  var cyberBootStart = performance.now();
+  var CYBER_BOOT_DURATION = 5600;
+
+  function initMatrixStreams() {
+    var fontSize = 14;
+    var colCount = Math.ceil(W / fontSize);
+    matrixCols = [];
+    for (var c = 0; c < colCount; c++) {
+      matrixCols.push({
+        x: c * fontSize,
+        y: Math.random() * -H,
+        speed: 4.5 + Math.random() * 8.5,
+        len: 10 + Math.floor(Math.random() * 18),
+        isEmerald: Math.random() < 0.28,
+        seed: Math.floor(Math.random() * MATRIX_CHARS.length)
+      });
+    }
+  }
+
+  function triggerCyberBoot() {
+    if (reduced) return;
+    initMatrixStreams();
+    cyberBootStart = performance.now();
+    cyberBootActive = true;
+  }
+
+  /* Easter egg: 3 clics rápidos en el logo IE permiten probar la secuencia manualmente */
+  var brandClicks = 0;
+  var brandTimer = null;
+  var brandEl = document.querySelector(".brand");
+  if (brandEl) {
+    brandEl.addEventListener("click", function () {
+      brandClicks++;
+      clearTimeout(brandTimer);
+      if (brandClicks >= 3) {
+        brandClicks = 0;
+        triggerCyberBoot();
+      } else {
+        brandTimer = setTimeout(function () { brandClicks = 0; }, 700);
+      }
+    });
+  }
 
   function initCanvas() {
     DPR = Math.min(window.devicePixelRatio || 1, 2);
@@ -1297,6 +2194,7 @@ footer {
         r: 1.2 + Math.random() * 1.2
       });
     }
+    initMatrixStreams();
   }
 
   window.addEventListener("mousemove", function (e) {
@@ -1309,8 +2207,70 @@ footer {
     mouse.y = -9999;
   });
 
-  function render() {
+  function drawCyberBoot(now) {
+    var elapsed = now - cyberBootStart;
+    if (elapsed >= CYBER_BOOT_DURATION) {
+      cyberBootActive = false;
+      return 0;
+    }
+
+    var alphaEnv = 1;
+    if (elapsed < 700) {
+      alphaEnv = elapsed / 700;
+    } else if (elapsed > 3800) {
+      alphaEnv = Math.max(0, 1 - (elapsed - 3800) / (CYBER_BOOT_DURATION - 3800));
+    }
+
+    var grad = ctx.createRadialGradient(W * 0.5, H * 0.42, 20, W * 0.5, H * 0.42, Math.max(W, H) * 0.7);
+    grad.addColorStop(0, "rgba(0, 240, 255, " + (0.14 * alphaEnv).toFixed(3) + ")");
+    grad.addColorStop(0.55, "rgba(16, 185, 129, " + (0.06 * alphaEnv).toFixed(3) + ")");
+    grad.addColorStop(1, "rgba(4, 7, 13, 0)");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+
+    var fontSize = 14;
+    ctx.font = "600 " + fontSize + "px 'JetBrains Mono', monospace";
+    for (var i = 0; i < matrixCols.length; i++) {
+      var col = matrixCols[i];
+      col.y += col.speed;
+      if (col.y - col.len * fontSize > H) {
+        col.y = Math.random() * -140;
+        col.speed = 4.5 + Math.random() * 8.5;
+      }
+
+      for (var t = 0; t < col.len; t++) {
+        var charY = col.y - t * fontSize;
+        if (charY < -fontSize || charY > H + fontSize) continue;
+
+        var fade = (1 - t / col.len) * alphaEnv;
+        if (t === 0) {
+          ctx.fillStyle = "rgba(241, 245, 249, " + (0.92 * alphaEnv).toFixed(3) + ")";
+        } else if (col.isEmerald) {
+          ctx.fillStyle = "rgba(16, 185, 129, " + (0.68 * fade).toFixed(3) + ")";
+        } else {
+          ctx.fillStyle = "rgba(0, 240, 255, " + (0.68 * fade).toFixed(3) + ")";
+        }
+
+        var idx = (col.seed + t + Math.floor(elapsed * 0.015)) % MATRIX_CHARS.length;
+        ctx.fillText(MATRIX_CHARS[idx], col.x, charY);
+      }
+    }
+
+    var scanY = ((elapsed * 0.34) % (H + 120)) - 60;
+    var scanGrad = ctx.createLinearGradient(0, scanY - 35, 0, scanY + 35);
+    scanGrad.addColorStop(0, "rgba(0, 240, 255, 0)");
+    scanGrad.addColorStop(0.5, "rgba(0, 240, 255, " + (0.24 * alphaEnv).toFixed(3) + ")");
+    scanGrad.addColorStop(1, "rgba(0, 240, 255, 0)");
+    ctx.fillStyle = scanGrad;
+    ctx.fillRect(0, scanY - 35, W, 70);
+
+    return alphaEnv;
+  }
+
+  function render(now) {
     ctx.clearRect(0, 0, W, H);
+    var bootStrength = cyberBootActive ? drawCyberBoot(now || performance.now()) : 0;
+    var meshFactor = 1 - bootStrength * 0.65;
     var maxDist = 135;
 
     for (var i = 0; i < nodes.length; i++) {
@@ -1328,7 +2288,7 @@ footer {
         var dy = n.y - m.y;
         var dist = Math.hypot(dx, dy);
         if (dist < maxDist) {
-          var alpha = (1 - dist / maxDist) * 0.22;
+          var alpha = (1 - dist / maxDist) * 0.22 * meshFactor;
           ctx.strokeStyle = "rgba(0, 240, 255, " + alpha.toFixed(3) + ")";
           ctx.lineWidth = 0.8;
           ctx.beginPath();
@@ -1340,7 +2300,7 @@ footer {
 
       var mDist = Math.hypot(n.x - mouse.x, n.y - mouse.y);
       if (mDist < 170) {
-        var mAlpha = (1 - mDist / 170) * 0.45;
+        var mAlpha = (1 - mDist / 170) * 0.45 * meshFactor;
         ctx.strokeStyle = "rgba(56, 189, 248, " + mAlpha.toFixed(3) + ")";
         ctx.lineWidth = 1;
         ctx.beginPath();
@@ -1349,7 +2309,7 @@ footer {
         ctx.stroke();
       }
 
-      ctx.fillStyle = "rgba(186, 230, 253, 0.55)";
+      ctx.fillStyle = "rgba(186, 230, 253, " + (0.55 * meshFactor).toFixed(3) + ")";
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
       ctx.fill();
@@ -1361,10 +2321,10 @@ footer {
   }
 
   initCanvas();
-  render();
+  requestAnimationFrame(render);
   window.addEventListener("resize", function () {
     initCanvas();
-    if (reduced) render();
+    if (reduced) render(0);
   });
 })();
 </script>
